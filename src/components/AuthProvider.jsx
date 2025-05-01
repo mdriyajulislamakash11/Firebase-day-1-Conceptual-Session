@@ -19,7 +19,7 @@ const AuthProvider = ({children}) => {
         })
     }
 
-
+    // Github login
     const handleGithubLogin = () => {
         signInWithPopup(auth, githubProvider)
         .then((result) => {
@@ -27,7 +27,7 @@ const AuthProvider = ({children}) => {
         })
     }
 
-
+    // Twitter login
     const handleTwitterLogin = () => {
         signInWithPopup(auth, TwitterProvider)
         .then((result) => {
