@@ -11,6 +11,7 @@ const AuthProvider = ({children}) => {
     const githubProvider = new GithubAuthProvider()
     const TwitterProvider = new TwitterAuthProvider()
 
+    //google login
     const handleGoogleLogin = () => {
         signInWithPopup(auth, googleProvider)
         .then((result) => {
