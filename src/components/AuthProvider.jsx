@@ -1,4 +1,4 @@
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, TwitterAuthProvider } from 'firebase/auth';
 import { GoogleAuthProvider, GithubAuthProvider} from 'firebase/auth';
 import React, { createContext } from 'react';
 import { auth } from '../../firebase.init';
@@ -9,6 +9,7 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
+    const TwitterProvider = new TwitterAuthProvider()
 
     const handleGoogleLogin = () => {
         signInWithPopup(auth, googleProvider)
@@ -26,13 +27,21 @@ const AuthProvider = ({children}) => {
     }
 
 
+    const handleTwitterLogin = () => {
+        signInWithPopup(auth, TwitterProvider)
+        .then((result) => {
+            console.log(result.user)
+        })
+    }
+
+
 
     
 
     const authInfo = {
         handleGoogleLogin,
         handleGithubLogin,
-
+        handleTwitterLogin,
     }
     
     return (
